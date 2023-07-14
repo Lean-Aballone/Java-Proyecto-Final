@@ -32,10 +32,11 @@ public class Menu {
                         \t2.Generacion de datos.
                         \t3.Lectura de datos.
                         \t4.Actualizar dato por id.
-                        \t5.Eliminar dato por id.
-                        \t6.Gestionar base de datos.
-                        \t0.Salir."""
+                        \t5.Eliminar dato por id."""
         );
+        if(isSQL)System.out.println("\t6.Gestionar base de datos.");
+        System.out.println("\t0.Salir.");
+
         System.out.print("Ingresar Opcion: ");
         return cin.nextByte();
     }
@@ -84,7 +85,33 @@ public class Menu {
 
     }
 
-    private void menuGenDatos(){
+    private boolean menuIngresarDatos(){
+        // Retorna falso al cancelar el ingreso de datos.
+        byte opt;
+        System.out.println("""
+                \t1.Ingresar Orador.
+                \t2.Ingresar Ticket.
+                \t0.Volver.""");
+        System.out.print("Ingresar Opcion: ");
+        opt = cin.nextByte();
+        switch (opt){
+            case 0: return false;
+            case 1:
+                GenData dataOrador = new GenData(oradorService);
+                dataOrador.ingresoManualOrador();
+                break;
+            case 2:
+                GenData dataTicket = new GenData(ticketService);
+                dataTicket.ingresoManualTicket();
+                break;
+            default:
+                System.out.println(InvalidOpt);
+                menuIngresarDatos();
+        }
+        return true;
+    }
+
+    private void menuGenDatosGenericos(){
         byte optGen;
         int cantidad;
         System.out.println("""
@@ -116,7 +143,7 @@ public class Menu {
                 break;
             default:
                 System.out.println(InvalidOpt);
-                menuGenDatos();
+                menuGenDatosGenericos();
         }
     }
 
@@ -127,8 +154,8 @@ public class Menu {
         int ticketID;
         int oradorID;
         System.out.println("""
-                \t1.Imprimir Datos Genericos Orador.
-                \t2.Imprimir Datos Genericos Ticket.
+                \t1.Imprimir Datos Orador.
+                \t2.Imprimir Datos Ticket.
                 \t3.Imprimir Todos.
                 \t0.Volver."""
         );
@@ -240,7 +267,24 @@ public class Menu {
                 opt = -1;
                 break;
             case 2:
-                menuGenDatos();
+                byte opt_aux;
+                boolean dataEntry;
+                do{
+                    System.out.println("\tOpciones: ");
+                    System.out.println("\t\t1.Ingresar Datos Genericos.\n\t\t2.Ingresar Datos Manualmente.\n\t\t0.Volver.");
+                    System.out.print("Ingresar Opcion: ");
+                    opt_aux = cin.nextByte();
+                    switch (opt_aux){
+                        case 0:break;
+                        case 1:menuGenDatosGenericos();break;
+                        case 2:
+                            do{
+                                dataEntry = menuIngresarDatos();
+                            }while(!dataEntry);
+                            break;
+                        default:System.out.println(InvalidOpt);
+                    }
+                }while(opt_aux != 0);
                 opt = -1;
                 break;
             case 3:
@@ -259,7 +303,7 @@ public class Menu {
                 if(isSQL){
                     Main.bdSettings();
                 }else {
-                    System.out.println("Cambiar Metodo de almacenamiento a 'Base de datos SQL'.");
+                    System.out.println("\t\t\tCambiar Metodo de almacenamiento a 'Base de datos SQL'.");
                 }
                 break;
             default:

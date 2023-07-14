@@ -21,6 +21,10 @@ public class Ticket {
         this.registration = LocalDateTime.now();
     }
 
+    public Ticket(){
+
+    }
+
     public void setName(String name) {
         this.name = name;
     }
@@ -43,6 +47,10 @@ public class Ticket {
 
     public void setID(int ID) {
         this.ID = ID;
+    }
+
+    public void setRegistration(LocalDateTime registration) {
+        this.registration = registration;
     }
 
     @Override

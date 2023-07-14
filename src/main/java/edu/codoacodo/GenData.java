@@ -7,31 +7,26 @@ import edu.codoacodo.service.TicketService;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class GenData {
 
     private OradorService oradorService;
-
     private TicketService ticketService;
-    private int cantidad;
     private List<Orador> oradorData = new ArrayList<>();
     private List<Ticket> ticketData = new ArrayList<>();
 
     public GenData(OradorService oradorService) {
         this.oradorService = oradorService;
-        //genOrador(cantidad);
     }
 
     public GenData(TicketService ticketService){
         this.ticketService = ticketService;
-        //genTicket(cantidad);
     }
 
     public GenData(OradorService oradorService, TicketService ticketService){
         this.oradorService = oradorService;
         this.ticketService = ticketService;
-        //genOrador(cantidad);
-        //genTicket(cantidad);
     }
 
     public void genOrador(int cantidad){
@@ -50,14 +45,12 @@ public class GenData {
 
     private void saveMethod(List<Ticket> ticketData){
         for(int item=0; ticketData.size() > item; item++) {
-            //System.out.println(oradorData.get(item));
             ticketService.saveTicket(ticketData.get(item));
         }
     }
 
     private void saveMethod(){
         for(int item=0; oradorData.size() > item; item++) {
-            //System.out.println(oradorData.get(item));
             oradorService.saveOrador(oradorData.get(item));
         }
     }
@@ -65,7 +58,37 @@ public class GenData {
     public void all(int cantidad){
         genOrador(cantidad);
         genTicket(cantidad);
+    }
 
+    public void ingresoManualOrador(){
+        Scanner cin = new Scanner(System.in);
+        String n,s,c;
+        System.out.println("Carga de datos Orador.");
+        System.out.print("Ingresar Nombre: ");
+        n = cin.nextLine();
+        System.out.print("Ingresar Apellido: ");
+        s = cin.nextLine();
+        System.out.print("Ingresar Comentario: ");
+        c = cin.nextLine();
+        oradorService.saveOrador(new Orador(n,s,c));
+    }
+
+    public void ingresoManualTicket(){
+        Scanner cin = new Scanner(System.in);
+        String n,s,m,c;
+        byte q;
+        System.out.println("Carga de datos Ticket.");
+        System.out.print("Ingresar Nombre: ");
+        n = cin.nextLine();
+        System.out.print("Ingresar Apellido: ");
+        s = cin.nextLine();
+        System.out.print("Ingresar Mail: ");
+        m = cin.nextLine();
+        System.out.print("Ingresar Cantidad de tickets: ");
+        q = cin.nextByte();
+        System.out.print("Ingresar Categoria: ");
+        c = cin.next();
+        ticketService.saveTicket(new Ticket(n,s,m,q,c));
     }
 
 

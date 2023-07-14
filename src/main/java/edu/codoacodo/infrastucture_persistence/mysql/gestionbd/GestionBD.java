@@ -67,24 +67,19 @@ public class GestionBD{
             connectBD();
         }
     }
-    //Orador
-//    public static void insertar(){
-//
-//    }
-    //Ticket
-    public String insertar(){
-        if(!isConnected){
-            System.out.println("\t\tConexion con base de datos no establecida.");
-            return null;
+
+    public void checker(GestionBD bd){
+        Scanner cin = new Scanner(System.in);
+        if(bd.getBdName() == null){
+            System.out.print("Ingresar base de datos a utilizar:");
+            Main.bdGestion.setBdName(cin.next());
         }
         if(Main.bdGestion.getBdTable() == null){
-            System.out.print("Ingresar Tabla a utilizar.");
-            Scanner cin = new Scanner(System.in);
+            System.out.print("Ingresar Tabla a utilizar:");
             Main.bdGestion.setBdTable(cin.next());
         }
-        return "USE "+ Main.bdGestion.getBdName()+
-                " INSERT INTO" +Main.bdGestion.getBdTable();
     }
+
 
 
     public void setBdName(String bdName) {

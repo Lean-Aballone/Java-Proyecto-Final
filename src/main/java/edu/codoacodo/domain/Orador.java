@@ -18,6 +18,10 @@ public class Orador {
         this.registration = LocalDateTime.now();
     }
 
+    public Orador() {
+
+    }
+
     public void setName(String name) {
         this.name = name;
     }
@@ -32,6 +36,10 @@ public class Orador {
 
     public void setID(int ID) {
         this.ID = ID;
+    }
+
+    public void setRegistration(LocalDateTime registration) {
+        this.registration = registration;
     }
 
     @Override

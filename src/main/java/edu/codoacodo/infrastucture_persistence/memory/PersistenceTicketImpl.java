@@ -47,7 +47,11 @@ public class PersistenceTicketImpl implements IPersistenceTicket {
 
     @Override
     public void deleteTicket(int id){
-        bdTicket.remove(id);
+        if(id > bdTicket.size()){
+            System.out.println("ID NO ENCONTRADO");
+        }else{
+            bdTicket.remove(id);
+        }
     }
 
     private byte updateTicketSelector(Scanner cin){
@@ -67,6 +71,10 @@ public class PersistenceTicketImpl implements IPersistenceTicket {
 
     @Override
     public void updateTicket(int id){
+        if(id > bdTicket.size()){
+            System.out.println("ID NO ENCONTRADO");
+            return;
+        }
         Scanner cin = new Scanner(System.in);
         Ticket edit = bdTicket.get(id);
         boolean exit = false;
@@ -77,19 +85,19 @@ public class PersistenceTicketImpl implements IPersistenceTicket {
                     break;
                 case 1:
                     System.out.print("Ingresar Nombre:");
-                    edit.setName(cin.next());
+                    edit.setName(cin.nextLine());
                     bdTicket.set(id,edit);
                     System.out.println("Nombre Modificado Correctamente.");
                     break;
                 case 2:
                     System.out.print("Ingresar Apellido:");
-                    edit.setSurname(cin.next());
+                    edit.setSurname(cin.nextLine());
                     bdTicket.set(id,edit);
                     System.out.println("Apellido Modificado Correctamente.");
                     break;
                 case 3:
                     System.out.print("Ingresar Email:");
-                    edit.setEmail(cin.next());
+                    edit.setEmail(cin.nextLine());
                     bdTicket.set(id,edit);
                     System.out.println("Email Modificado Correctamente.");
                     break;
@@ -101,7 +109,7 @@ public class PersistenceTicketImpl implements IPersistenceTicket {
                     break;
                 case 5:
                     System.out.print("Ingresar Categoria:");
-                    edit.setCategory(cin.next());
+                    edit.setCategory(cin.nextLine());
                     bdTicket.set(id,edit);
                     System.out.println("Categoria Modificada Correctamente.");
                     break;

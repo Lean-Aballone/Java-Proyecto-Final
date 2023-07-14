@@ -4,9 +4,6 @@ import edu.codoacodo.service.OradorService;
 import edu.codoacodo.service.TicketService;
 
 public class ReadData {
-
-    private boolean allIsPrinting;
-    private int id;
     private OradorService oradorService;
     private TicketService ticketService;
 

@@ -46,7 +46,11 @@ public class PersistenceOradorImpl implements IPersistenceOrador {
 
     @Override
     public void deleteOrador(int id) {
-        bdOrador.remove(id);
+        if(id > bdOrador.size()){
+            System.out.println("ID NO ENCONTRADO.");
+        }else {
+            bdOrador.remove(id);
+        }
     }
     private byte updateOradorSelector(Scanner cin){
         System.out.println("""
@@ -62,6 +66,10 @@ public class PersistenceOradorImpl implements IPersistenceOrador {
     }
     @Override
     public void updateOrador(int id) {
+        if(id > bdOrador.size()){
+            System.out.println("ID NO ENCONTRADO");
+            return;
+        }
         Scanner cin = new Scanner(System.in);
         Orador edit = bdOrador.get(id);
         boolean exit = false;
@@ -72,19 +80,19 @@ public class PersistenceOradorImpl implements IPersistenceOrador {
                     break;
                 case 1:
                     System.out.print("Ingresar Nombre: ");
-                    edit.setName(cin.next());
+                    edit.setName(cin.nextLine());
                     bdOrador.set(id, edit);
                     System.out.println("Nombre Modificado Correctamnte.");
                     break;
                 case 2:
                     System.out.print("Ingresar Apellido: ");
-                    edit.setSurname(cin.next());
+                    edit.setSurname(cin.nextLine());
                     bdOrador.set(id, edit);
                     System.out.println("Apellido Modificado Correctamnte.");
                     break;
                 case 3:
                     System.out.print("Ingresar Comentario: ");
-                    edit.setComment(cin.next());
+                    edit.setComment(cin.nextLine());
                     bdOrador.set(id, edit);
                     System.out.println("Comentario Modificado Correctamnte.");
                     break;

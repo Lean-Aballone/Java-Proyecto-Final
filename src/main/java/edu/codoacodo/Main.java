@@ -37,11 +37,10 @@ public class Main {
         //bdGestion.connectBD();
         System.out.println("""
                         Opciones:
-                        \t1.Crear Database.
+                        \t1.Crear Base de datos.
                         \t2.Crear Tabla.
-                        \t3.Ingresar Datos.
-                        \t0.Salir.
-                        """);
+                        \t3.Cambiar de Base de datos.
+                        \t0.Menu Principal.""");
         System.out.print("Ingresar Opcion: ");
         byte optdb = cin.nextByte();
         switch (optdb){
@@ -56,17 +55,9 @@ public class Main {
                 bdGestion.crearTabla();
                 break;
             case 3:
-                byte optIns;
-                do {
-                    System.out.println("""
-                        \t1.Insertar Orador.
-                        \t2.Insertar Ticket.
-                        \t0.Salir
-                        """);
-                    optIns = cin.nextByte();
-                }while(optIns != 1 && optIns != 2 && optIns != 0);
-                if(optIns == 1)bdGestion.insertar();
-                if(optIns == 2)bdGestion.insertar();
+                System.out.print("Ingresar Nombre de Base de datos:");
+                bdName = cin.next();
+                Main.bdGestion.setBdName(bdName);
                 break;
             default:
                 System.out.println("Ocurrio un error.");
@@ -76,11 +67,10 @@ public class Main {
     public static void bdSettings(GestionBD bdGestion){
         System.out.println("""
                         Opciones:
-                        \t1.Crear Database.
+                        \t1.Crear Base de datos.
                         \t2.Crear Tabla.
-                        \t3.Ingresar Datos.
-                        \t0.Salir.
-                        """);
+                        \t3.Cambiar de Base de datos.
+                        \t0.Menu Principal.""");
         System.out.print("Ingresar Opcion: ");
         byte optdb = cin.nextByte();
         switch (optdb){
@@ -95,8 +85,10 @@ public class Main {
                 bdGestion.crearTabla();
                 break;
             case 3:
-                System.out.println("...");
-                bdGestion.insertar();
+                System.out.print("Ingresar Nombre de Base de datos:");
+                bdName = cin.next();
+                Main.bdGestion.setBdName(bdName);
+                break;
             default:
                 System.out.println("Ocurrio un error.");
         }
