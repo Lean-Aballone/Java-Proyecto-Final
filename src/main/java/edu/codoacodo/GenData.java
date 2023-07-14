@@ -47,16 +47,20 @@ public class GenData {
         for(int item=0; ticketData.size() > item; item++) {
             ticketService.saveTicket(ticketData.get(item));
         }
+        //if(Main.bdGestion.isConnected())Main.bdGestion.setBdTable("");
     }
 
     private void saveMethod(){
         for(int item=0; oradorData.size() > item; item++) {
             oradorService.saveOrador(oradorData.get(item));
         }
+       // if(Main.bdGestion.isConnected())Main.bdGestion.setBdTable("");
     }
 
     public void all(int cantidad){
+        if(Main.bdGestion.isConnected())Main.bdGestion.setBdTable("oradores");
         genOrador(cantidad);
+        if(Main.bdGestion.isConnected())Main.bdGestion.setBdTable("tickets");
         genTicket(cantidad);
     }
 

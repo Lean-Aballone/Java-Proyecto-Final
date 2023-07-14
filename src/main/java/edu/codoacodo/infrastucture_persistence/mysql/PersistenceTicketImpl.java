@@ -149,6 +149,7 @@ public class PersistenceTicketImpl implements IPersistenceTicket {
                 Scanner cin = new Scanner(System.in);
                 System.out.print("Ingresar Opcion: ");
                 opt = cin.nextByte();
+                cin.nextLine();
                 switch (opt){
                     case 0: break;
                     case 1:
@@ -197,6 +198,7 @@ public class PersistenceTicketImpl implements IPersistenceTicket {
                                 \t\t0.Cancelar.""");
                         System.out.print("Ingresar Opcion: ");
                         opt_aux = cin.nextByte();
+                        cin.nextLine();
                         switch (opt_aux){
                             case 0: break;
                             case 1:

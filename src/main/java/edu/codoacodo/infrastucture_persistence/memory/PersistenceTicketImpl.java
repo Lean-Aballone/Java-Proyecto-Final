@@ -65,8 +65,9 @@ public class PersistenceTicketImpl implements IPersistenceTicket {
                 \t0.Volver.
                 """);
         System.out.print("Ingresar Opcion: ");
-
-        return cin.nextByte();
+        byte opt = cin.nextByte();
+        cin.nextLine();
+        return opt;
     }
 
     @Override
@@ -104,6 +105,7 @@ public class PersistenceTicketImpl implements IPersistenceTicket {
                 case 4:
                     System.out.print("Ingresar Cantidad:");
                     edit.setQuantity(cin.nextByte());
+                    cin.nextLine();
                     bdTicket.set(id,edit);
                     System.out.println("Cantidad Modificada Correctamente.");
                     break;
@@ -116,6 +118,7 @@ public class PersistenceTicketImpl implements IPersistenceTicket {
                 case 6:
                     System.out.print("Ingresar ID:");
                     edit.setID(cin.nextInt());
+                    cin.nextLine();
                     bdTicket.set(id,edit);
                     System.out.println("ID Modificado Correctamente.");
                     break;

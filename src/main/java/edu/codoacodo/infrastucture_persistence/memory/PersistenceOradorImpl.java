@@ -61,8 +61,9 @@ public class PersistenceOradorImpl implements IPersistenceOrador {
                 \t0.Volver.
                 """);
         System.out.print("Ingresar Opcion: ");
-
-        return cin.nextByte();
+        byte opt = cin.nextByte();
+        cin.nextLine();
+        return opt;
     }
     @Override
     public void updateOrador(int id) {
@@ -75,6 +76,7 @@ public class PersistenceOradorImpl implements IPersistenceOrador {
         boolean exit = false;
         while(!exit) {
             switch (updateOradorSelector(cin)) {
+
                 case 0:
                     exit = true;
                     break;
@@ -99,6 +101,7 @@ public class PersistenceOradorImpl implements IPersistenceOrador {
                 case 4:
                     System.out.print("Ingresar ID: ");
                     edit.setID(cin.nextInt());
+                    cin.nextLine();
                     bdOrador.set(id, edit);
                     System.out.println("ID Modificado Correctamnte.");
                     break;

@@ -2,11 +2,7 @@ package edu.codoacodo;
 import edu.codoacodo.service.OradorService;
 import edu.codoacodo.service.TicketService;
 import edu.codoacodo.infrastucture_persistence.mysql.gestionbd.GestionBD;
-
-import java.io.BufferedReader;
 import java.io.Console;
-import java.io.InputStreamReader;
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main {
@@ -17,7 +13,7 @@ public class Main {
     private final static Scanner cin = new Scanner(System.in);
     public static String bdName,bdUser,bdPass;
     public static void main(String[] args) {
-
+        System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
         Menu menu = new Menu(oradorService, ticketService);
         byte opt;
         do{

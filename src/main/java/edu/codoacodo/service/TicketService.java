@@ -4,6 +4,7 @@ import edu.codoacodo.Main;
 import edu.codoacodo.domain.Ticket;
 import edu.codoacodo.infrastucture_persistence.TicketRepository;
 
+import java.util.Objects;
 import java.util.Scanner;
 
 public class TicketService {
@@ -17,6 +18,7 @@ public class TicketService {
     }
 
     private boolean usingTable(){
+        if(Objects.equals(Main.bdGestion.getBdTable(),"tickets"))return false;
         Scanner cin = new Scanner(System.in);
         byte opt;
         do{
@@ -35,16 +37,16 @@ public class TicketService {
     }
 
     public Ticket loadTicket(int id){
-        if(isSQL){
+        if(isSQL ){
             if(usingTable()) Main.bdGestion.setBdTable("tickets");
         }
         return repository.loadTicket(id);
     }
 
     public void printAllTicketList(){
-        if(isSQL){
-            if(usingTable()) Main.bdGestion.setBdTable("tickets");
-        }
+//        if(isSQL){
+//            if(usingTable()) Main.bdGestion.setBdTable("tickets");
+//        }
         repository.printAllTicketList();}
 
     public void deleteTicket(int id) {

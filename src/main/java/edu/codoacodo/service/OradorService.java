@@ -4,12 +4,13 @@ import edu.codoacodo.Main;
 import edu.codoacodo.domain.Orador;
 import edu.codoacodo.infrastucture_persistence.OradorRepository;
 
+import java.util.Objects;
 import java.util.Scanner;
 
 public class OradorService {
 
     private boolean isSQL;
-
+    private boolean tableSetted;
     private OradorRepository repository = new OradorRepository();;
     public void setSQL(boolean SQL) {
         isSQL = SQL;
@@ -17,6 +18,7 @@ public class OradorService {
     }
 
     private boolean usingTable(){
+        if(Objects.equals(Main.bdGestion.getBdTable(),"oradores"))return false;
         Scanner cin = new Scanner(System.in);
         byte opt;
         do{
@@ -44,9 +46,9 @@ public class OradorService {
     }
 
     public void printAllOradorList(){
-        if(isSQL){
-            if(usingTable()) Main.bdGestion.setBdTable("oradores");
-        }
+//        if(isSQL){
+//            if(usingTable()) Main.bdGestion.setBdTable("oradores");
+//        }
         repository.printAllOradorList();
     }
 

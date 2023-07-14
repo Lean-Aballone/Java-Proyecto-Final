@@ -140,6 +140,7 @@ public class PersistenceOradorImpl implements IPersistenceOrador {
                 Scanner cin = new Scanner(System.in);
                 System.out.print("Ingresar Opcion: ");
                 opt = cin.nextByte();
+                cin.nextLine();
                 switch (opt){
                     case 0:break;
                     case 1:

@@ -7,8 +7,6 @@ public class ReadData {
     private OradorService oradorService;
     private TicketService ticketService;
 
-
-
     public ReadData(OradorService oradorService) {
         this.oradorService = oradorService;
     }
@@ -27,13 +25,18 @@ public class ReadData {
     }
 
     public void orador(){
-        oradorService.printAllOradorList();
+        if(Main.bdGestion.isConnected())Main.bdGestion.setBdTable("oradores");
+        oradorService.printAllOradorList()
+        ;
     }
     public void orador(int id){
         System.out.println(oradorService.loadOrador(id));
     }
 
-    public void ticket(){ ticketService.printAllTicketList(); }
+    public void ticket(){
+        if(Main.bdGestion.isConnected())Main.bdGestion.setBdTable("tickets");
+        ticketService.printAllTicketList();
+    }
     public void ticket(int id){
         System.out.println(ticketService.loadTicket(id));
     }
