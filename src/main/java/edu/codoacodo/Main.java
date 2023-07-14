@@ -13,7 +13,6 @@ public class Main {
     private final static Scanner cin = new Scanner(System.in);
     public static String bdName,bdUser,bdPass;
     public static void main(String[] args) {
-        System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
         Menu menu = new Menu(oradorService, ticketService);
         byte opt;
         do{
